@@ -1,31 +1,526 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meizhi Privacy Policy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Meizhi</title>
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.6; }
-    h1 { color: #4F46E5; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary: #FF6B35;
+      --primary-muted: rgba(255, 107, 53, 0.12);
+      --bg: #0F0F0F;
+      --surface: #1A1A1A;
+      --surface2: #242424;
+      --border: rgba(255, 255, 255, 0.08);
+      --text-primary: #F5F5F5;
+      --text-secondary: rgba(245, 245, 245, 0.72);
+      --text-muted: rgba(245, 245, 245, 0.42);
+      --radius: 20px;
+      --radius-sm: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* ── HERO HEADER ── */
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, rgba(255, 107, 53, 0.6) 100%);
+      padding: 80px 24px 56px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .hero::before { width: 320px; height: 320px; top: -120px; right: -80px; }
+    .hero::after  { width: 160px; height: 160px; top: 60px; right: 120px; background: rgba(255,255,255,0.04); }
+
+    .hero-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      height: 72px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1.5px solid rgba(255, 255, 255, 0.3);
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: #fff;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.72);
+      font-weight: 500;
+    }
+
+    /* ── INTRO BANNER ── */
+    .intro-banner {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(255, 107, 53, 0.07);
+      border: 1px solid rgba(255, 107, 53, 0.2);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      margin-bottom: 8px;
+    }
+
+    .intro-banner .icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    .intro-banner p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 40px 20px 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* ── SECTION CARDS ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* stagger */
+    .card:nth-child(1)  { animation-delay: 0.04s; }
+    .card:nth-child(2)  { animation-delay: 0.08s; }
+    .card:nth-child(3)  { animation-delay: 0.12s; }
+    .card:nth-child(4)  { animation-delay: 0.16s; }
+    .card:nth-child(5)  { animation-delay: 0.20s; }
+    .card:nth-child(6)  { animation-delay: 0.24s; }
+    .card:nth-child(7)  { animation-delay: 0.28s; }
+    .card:nth-child(8)  { animation-delay: 0.32s; }
+    .card:nth-child(9)  { animation-delay: 0.36s; }
+    .card:nth-child(10) { animation-delay: 0.40s; }
+    .card:nth-child(11) { animation-delay: 0.44s; }
+    .card:nth-child(12) { animation-delay: 0.48s; }
+    .card:nth-child(13) { animation-delay: 0.52s; }
+    .card:nth-child(14) { animation-delay: 0.56s; }
+    .card:nth-child(15) { animation-delay: 0.60s; }
+    .card:nth-child(16) { animation-delay: 0.64s; }
+    .card:nth-child(17) { animation-delay: 0.68s; }
+    .card:nth-child(18) { animation-delay: 0.72s; }
+    .card:nth-child(19) { animation-delay: 0.76s; }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 11px;
+      background: var(--primary-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      color: var(--text-primary);
+    }
+
+    .card-text {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--text-secondary);
+    }
+
+    /* ── BULLET LIST ── */
+    .bullet-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .bullet-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--primary);
+      margin-top: 8px;
+      flex-shrink: 0;
+    }
+
+    .bullet-text {
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    /* ── CONTACT CTA ── */
+    .contact-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      margin-top: 4px;
+      transition: opacity 0.18s, transform 0.18s;
+    }
+
+    .contact-cta:hover {
+      opacity: 0.9;
+      transform: scale(0.99);
+    }
+
+    .contact-cta .cta-icon { font-size: 20px; }
+    .contact-cta .cta-ext  { font-size: 14px; opacity: 0.7; }
+
+    /* ── FOOTER NOTE ── */
+    .footer-note {
+      font-size: 12px;
+      line-height: 1.8;
+      text-align: center;
+      color: var(--text-muted);
+      padding: 12px 0 8px;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 480px) {
+      .hero { padding: 60px 20px 44px; }
+      .container { padding: 28px 14px 52px; gap: 12px; }
+      .card { padding: 18px 16px; }
+    }
   </style>
 </head>
 <body>
-  <h1>Meizhi Privacy Policy</h1>
-  <p>Last updated: April 2026</p>
-  
-  <h2>Data We Collect</h2>
-  <p>We collect email, preferences, allergies, dietary restrictions, and meal data to provide personalized meal planning.</p>
-  
-  <h2>AI Services</h2>
-  <p>We use Google Gemini for AI-powered meal generation. Your anonymized preferences (not personal info) may be shared with AI for meal suggestions.</p>
-  
-  <h2>Third-Party Services</h2>
-  <p>Google, Apple, Supabase, TheMealDB, Pexels</p>
-  
-  <h2>Data Security</h2>
-  <p>We use Supabase for secure data storage.</p>
-  
-  <h2>Your Rights</h2>
-  <p>Contact us to delete your data: mirkazuki.app@gmail.com</p>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-icon">🔒</div>
+    <h1>Privacy Policy</h1>
+    <p>Meizhi · Last updated April 2026</p>
+  </header>
+
+  <!-- CONTENT -->
+  <main class="container">
+
+    <!-- Intro Banner -->
+    <div class="intro-banner">
+      <span class="icon">🔒</span>
+      <p>We respect your privacy. Your data is encrypted, never sold, and always under your control.</p>
+    </div>
+
+    <!-- Introduction -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <span class="card-title">Introduction</span>
+      </div>
+      <p class="card-text">
+        Meizhi is an AI-powered meal planning app that helps you eat better every day. We generate personalized daily meal plans, send timely reminders, and learn your preferences over time. This Privacy Policy explains what information we collect, how we use it, and your rights regarding your data.
+      </p>
+    </div>
+
+    <!-- AI & Automated Generation -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">✨</div>
+        <span class="card-title">AI &amp; Automated Generation</span>
+      </div>
+      <p class="card-text">
+        Meizhi is an AI-powered meal planning app. To generate personalized meal plans, we share your dietary preferences and restrictions with our AI service provider (currently Google Gemini). The AI service provider may change in the future to ensure the best user experience. The data shared is anonymized and does not include personally identifiable information such as your name, email, or location — we share only your generalized preferences such as dietary restrictions, allergies, cuisine preferences, and meal timing so the AI can generate appropriate meal suggestions. Meal suggestions are generated automatically and do not involve human review. These automated suggestions do not affect your legal rights. You can update your preferences at any time to influence future meal generation.
+      </p>
+    </div>
+
+    <!-- AI Service Providers -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🤖</div>
+        <span class="card-title">AI Service Providers</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Meizhi uses AI to generate personalized meal plans tailored to your dietary needs.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Your data shared with our AI service is anonymized and does not include personally identifiable information such as your name, email, or location.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">We share only generalized preferences — such as dietary restrictions, allergies, cuisine preferences, and meal timing — so the AI can generate appropriate meal suggestions for you.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">The current AI service provider is Google Gemini. The provider may change in the future to ensure the best user experience.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Our AI service provider processes this data solely to provide meal generation services on our behalf and is contractually bound to protect your data.</p></div>
+      </div>
+    </div>
+
+    <!-- Information We Collect -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🗄️</div>
+        <span class="card-title">Information We Collect</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Email address</strong> — used for account creation and authentication.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Display name</strong> — optional, personalizes your in-app experience.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Dietary preferences</strong> — cuisines, restrictions, and allergies you choose.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Push notification tokens</strong> — required to deliver meal reminders to your device.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Meal plan data</strong> — AI-generated meals, cooking history, and favorites.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Device timezone</strong> — used to schedule meal generation at 1:00 AM local time.</p></div>
+      </div>
+    </div>
+
+    <!-- How We Use -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">💡</div>
+        <span class="card-title">How We Use Your Information</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Generate 12 personalized meals daily tailored to your preferences.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Send meal reminder notifications 30 minutes before each meal time.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Maintain your cooking history and streak statistics.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Improve AI meal generation quality over time.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Authenticate your account securely across sessions.</p></div>
+      </div>
+    </div>
+
+    <!-- Data Storage & Security -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <span class="card-title">Data Storage &amp; Security</span>
+      </div>
+      <p class="card-text">
+        All your data is stored securely in Supabase, a SOC 2 Type II certified infrastructure provider. Data is encrypted in transit (TLS 1.2+) and at rest (AES-256). Meal images are stored in a private S3-compatible bucket with per-user access controls. We never sell or rent your personal data to third parties.
+      </p>
+    </div>
+
+    <!-- Data Retention -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🕐</div>
+        <span class="card-title">Data Retention</span>
+      </div>
+      <p class="card-text">
+        We retain your personal data for as long as your account is active. If you delete your account, all associated data is permanently removed within 24 hours. Anonymous usage analytics may be retained for up to 12 months.
+      </p>
+    </div>
+
+    <!-- Third-Party Services -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">📦</div>
+        <span class="card-title">Third-Party Services</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Google Sign-In</strong> — optional authentication method via OAuth 2.0.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Apple Sign-In</strong> — optional authentication method via Sign in with Apple.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Google Gemini</strong> — AI service powering meal generation. Your anonymized dietary preferences are processed by Gemini to generate personalized meal plans.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Supabase</strong> — our primary database and authentication provider.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Expo Push Notifications</strong> — cross-platform notification delivery.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Pexels</strong> — ingredient image search for unrecognized ingredients.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>TheMealDB</strong> — ingredient image reference database.</p></div>
+      </div>
+    </div>
+
+    <!-- Push Notifications -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔔</div>
+        <span class="card-title">Push Notifications</span>
+      </div>
+      <p class="card-text">
+        Meizhi sends meal reminder notifications based on the timing preferences you configure in settings. Notifications are delivered 30 minutes before each scheduled meal. You can disable notifications at any time from the app settings or your device system settings. We use your Expo Push Token solely to deliver these reminders and never for marketing purposes.
+      </p>
+    </div>
+
+    <!-- Cookies -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🍪</div>
+        <span class="card-title">Cookies</span>
+      </div>
+      <p class="card-text">
+        We do not use cookies. Meizhi is a mobile app and does not store any cookies on your device.
+      </p>
+    </div>
+
+    <!-- Health Disclaimer -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🏥</div>
+        <span class="card-title">Health Disclaimer</span>
+      </div>
+      <p class="card-text">
+        Meizhi is a meal planning tool and is not a medical or clinical nutrition service. Meal suggestions are AI-generated based on your stated preferences and should not be treated as professional dietary or medical advice. Always consult a qualified healthcare provider for clinical nutritional guidance, especially if you have serious food allergies or medical dietary requirements.
+      </p>
+    </div>
+
+    <!-- Age Requirement -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <span class="card-title">Age Requirement</span>
+      </div>
+      <p class="card-text">
+        Meizhi is intended for users aged 13 and older. We do not knowingly collect personal information from children under 13. If you believe a child under 13 has provided us with personal data, please contact us and we will delete it promptly.
+      </p>
+    </div>
+
+    <!-- Your Rights & Data Deletion -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">👤</div>
+        <span class="card-title">Your Rights &amp; Data Deletion</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Access:</strong> You can view all your data within the app at any time.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Edit:</strong> Update your name, preferences, and meal timings from Profile settings.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Delete:</strong> Use "Delete Account" in Profile to permanently erase all your data — including meals, preferences, cooking history, and your account — within seconds.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Export:</strong> Contact us at <a href="mailto:mirkazuki.app@gmail.com" style="color: var(--primary);">mirkazuki.app@gmail.com</a> to request a copy of your data.</p></div>
+      </div>
+    </div>
+
+    <!-- Policy Updates -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🔄</div>
+        <span class="card-title">Policy Updates</span>
+      </div>
+      <p class="card-text">
+        When we make significant changes to this policy, we will notify you via email or an in-app notification. Continued use of the app after changes constitutes acceptance of the updated policy.
+      </p>
+    </div>
+
+    <!-- Lawful Basis (GDPR) -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">⚖️</div>
+        <span class="card-title">Lawful Basis for Processing (GDPR)</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Contractual Necessity:</strong> Processing your email, preferences, and meal data is necessary to provide you with the meal planning service you requested.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Legitimate Interests:</strong> We may process certain data for fraud prevention, security, and service improvement, which we believe is in your interest as a user.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Consent:</strong> Push notification delivery requires your explicit consent, which you can withdraw at any time.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Legal Obligation:</strong> We may retain certain data to comply with legal obligations.</p></div>
+      </div>
+    </div>
+
+    <!-- Right to Withdraw Consent -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">✋</div>
+        <span class="card-title">Right to Withdraw Consent</span>
+      </div>
+      <p class="card-text">
+        Where we process your data based on consent, you have the right to withdraw that consent at any time. To withdraw consent for push notifications, please disable them in your device settings or within the app's notification preferences. Withdrawal of consent does not affect the lawfulness of processing before your withdrawal.
+      </p>
+    </div>
+
+    <!-- Right to Lodge a Complaint -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🛡️</div>
+        <span class="card-title">Right to Lodge a Complaint</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">If you are located in the European Economic Area (EEA) and believe we have infringed your data protection rights, you have the right to lodge a complaint with your local supervisory authority.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>UK:</strong> Information Commissioner's Office (ICO) – <a href="https://ico.org.uk" target="_blank" rel="noopener" style="color:var(--primary);">ico.org.uk</a></p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>France:</strong> Commission Nationale de l'Informatique et des Libertés (CNIL)</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Germany:</strong> Bundesbeauftragter für den Datenschutz (BfDI)</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text"><strong>Spain:</strong> Agencia Española de Protección de Datos (AEPD)</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Find your local DPA at: <a href="https://ec.europa.eu/justice/article-29/structure/data-protection-authorities" target="_blank" rel="noopener" style="color:var(--primary);">ec.europa.eu/justice</a></p></div>
+      </div>
+    </div>
+
+    <!-- International Data Transfers -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">🌐</div>
+        <span class="card-title">International Data Transfers</span>
+      </div>
+      <div class="bullet-list">
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Meizhi operates globally. Your personal data may be transferred to and processed in countries outside the European Economic Area (EEA), including the United States.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">Our service providers (Supabase, Google, Apple) operate servers in the US. When we transfer data internationally, we ensure appropriate safeguards are in place, including Standard Contractual Clauses (SCCs) approved by the European Commission.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">We maintain data processing agreements with all third-party service providers to ensure your data is protected to GDPR standards.</p></div>
+        <div class="bullet-item"><div class="bullet-dot"></div><p class="bullet-text">You may request details of the safeguards in place by contacting us at <a href="mailto:mirkazuki.app@gmail.com" style="color:var(--primary);">mirkazuki.app@gmail.com</a>.</p></div>
+      </div>
+    </div>
+
+    <!-- Contact Us -->
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon">✉️</div>
+        <span class="card-title">Contact Us</span>
+      </div>
+      <p class="card-text">
+        If you have any questions, concerns, or requests regarding this Privacy Policy or your personal data, please contact us below. We aim to respond within 5 business days.
+      </p>
+    </div>
+
+    <!-- Contact CTA -->
+    <a class="contact-cta" href="mailto:mirkazuki.app@gmail.com">
+      <span class="cta-icon">✉️</span>
+      mirkazuki.app@gmail.com
+      <span class="cta-ext">↗</span>
+    </a>
+
+    <!-- Footer Note -->
+    <p class="footer-note">
+      By using Meizhi you agree to this Privacy Policy.<br />
+      We may update this policy from time to time.
+    </p>
+
+  </main>
 </body>
 </html>
